@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="http-builder">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../test/lib/http-builder.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../test/lib/httpclient-cache.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../test/lib/httpclient-win.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../test/lib/httpclient.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../test/lib/httpcore.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../test/lib/httpmime.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

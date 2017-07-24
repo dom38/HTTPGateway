@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HTTPGateway:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/HTTPGateway_jar</output-path>
+    <root id="archive" name="HTTPGateway.jar">
+      <element id="module-output" name="HTTPGateway" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../test/lib/http-builder.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../test/lib/httpclient-cache.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../test/lib/httpclient-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../test/lib/httpclient.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../test/lib/httpcore.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../test/lib/httpmime.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
