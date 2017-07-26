@@ -5,7 +5,7 @@ import javax.xml.ws.http.HTTPException;
 import java.io.IOException;
 
 
-public class HTTPGatewayTEST {
+public class HTTPGatewaytest {
 
     @Test
     public void assertGETRequestReturnsAString() throws IOException, HTTPException {
