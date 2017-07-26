@@ -6,6 +6,7 @@ import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -61,7 +62,7 @@ public class HTTPGateway {
 
     }
 
-    public String POSTRequest(String data, String instance, String username, String password, String postURL) throws HTTPException, IOException {
+    public String POSTRequest(String data, String instance, String postURL, String username, String password) throws HTTPException, IOException {
 
         StringBuilder returnedResponse = new StringBuilder();
         String postData = data;
@@ -109,7 +110,56 @@ public class HTTPGateway {
 
     }
 
-    public String PATCHRequest(String data, String instance, String username, String password, String patchURL) throws HTTPException, IOException {
+    public String POSTRequestSOAP(String soapAction, String dataSOAP, String instance, String postURL, String username, String password) throws HTTPException, IOException {
+
+        StringBuilder returnedResponse = new StringBuilder();
+        String postData = dataSOAP;
+        CredentialsProvider credsProvider = new BasicCredentialsProvider();
+        credsProvider.setCredentials(
+                new AuthScope(new HttpHost(instance)),
+                new UsernamePasswordCredentials(username, password));
+        CloseableHttpClient httpclient = HttpClients.custom()
+                .setDefaultCredentialsProvider(credsProvider)
+                .build();
+
+        try {
+
+            StringEntity entity = new StringEntity(postData, "UTF-8");
+            entity.setChunked(true);
+            HttpPost httpPost = new HttpPost(postURL);
+            httpPost.setEntity(entity);
+            httpPost.setHeader("Accept", "text/xml");
+            httpPost.addHeader("SOAPAction", soapAction);
+            returnedResponse.append("Executing request " + httpPost.getRequestLine());
+            CloseableHttpResponse response = httpclient.execute(httpPost);
+
+            try {
+
+                returnedResponse.append("----------------------------------------");
+                returnedResponse.append(response.getStatusLine());
+                String responseBody = EntityUtils.toString(response.getEntity());
+                returnedResponse.append(responseBody);
+
+            } catch (Exception e) {
+
+                return e.toString();
+
+            } finally {
+
+                response.close();
+                return returnedResponse.toString();
+
+            }
+
+        } finally {
+
+            httpclient.close();
+
+        }
+
+    }
+
+    public String PATCHRequest(String data, String instance, String patchURL, String username, String password) throws HTTPException, IOException {
 
         StringBuilder returnedResponse = new StringBuilder();
         String postData = data;
