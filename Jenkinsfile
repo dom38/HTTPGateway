@@ -7,4 +7,21 @@ pipeline {
             }
         }
     }
+    
+    post {
+    
+        success {
+        
+            echo "This all worked!"
+        
+        }
+        
+        always {
+       
+            echo "Going"
+            
+        }
+    
+    }
+    
 }
